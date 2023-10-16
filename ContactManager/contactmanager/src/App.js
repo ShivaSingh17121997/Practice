@@ -6,19 +6,19 @@ import Header from './Components/Header';
 
 
 function App() {
-  const [contact, setContact] = useState(()=>{
+  const [contact, setContact] = useState(() => {
     return JSON.parse(localStorage.getItem("contact")) || []
   })
 
-  useEffect(()=>{
+  useEffect(() => {
     localStorage.setItem("contact", JSON.stringify(contact))
-  },[contact])
+  }, [contact])
 
 
   const addContact = (data) => {
-    setContact([...contact, {id:Math.random() , data} ])
+    setContact([...contact, { id: Math.random(), data }])
     console.log(data)
-  } 
+  }
 
   const removeContact = (id) => {
 
@@ -27,12 +27,12 @@ function App() {
     })
     setContact(updatedList)
   }
-  
+
   return (
     <div className="App">
       <Header />
       <Form addContact={addContact} />
-      <ContactList contact={contact} removeContact = {removeContact} />
+      <ContactList contact={contact} removeContact={removeContact} />
     </div>
   );
 }
