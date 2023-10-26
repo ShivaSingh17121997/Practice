@@ -1,13 +1,11 @@
 import React, { useContext, useState } from 'react'
-import {useNavigate} from "react-router-dom"
-import { authContext } from '../AuthContext/AuthContextProvider';
-
+import { useNavigate } from "react-router-dom"
+import { AuthContext } from '../AuthContext/AuthContextProvider';
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const {loginUser} = useContext(authContext)
-
-    const navigate = useNavigate()
+    const {isLogin}=useContext(AuthContext)
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -21,21 +19,19 @@ export default function Login() {
                 }
             });
 
-            res = await res.json()
-            console.log(res)
+            const data = await res.json()
+            //  res = await res.json()
+            console.log(data.token)
 
-            if(res.token){
-                loginUser(res.token)
-                navigate("/home")
+            if (data.token) {
+                isLogin(data.token)
+              return  navigate("/dashboard")
             }
 
         }
         catch (error) {
             console.log(error)
         }
-
-      
-
     }
 
     return (
