@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       Axios Crud Operation
-      {/* <Axiostutorial />  */}
+      <Axiostutorial /> 
       <AxiosPost/>
       </div>
   );

@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function Card({title,body,id, image, price, category, rating  }) {
-    console.log(title,'from cards')
 
   return (
     <div>
