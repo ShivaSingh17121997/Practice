@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Card({title,body,id, image, price, category, rating  }) {
+export default function Card({title,body,id, image, price, category, rating,handleDelete  }) {
 
   return (
     <div>
@@ -12,6 +12,7 @@ export default function Card({title,body,id, image, price, category, rating  }) 
             <p>Price: {price}</p>
             <p>Rating: {rating.rate}</p>
             <p>Quantity: {rating.count}</p>
+            <button onClick={handleDelete} >delete</button>
         </div>
     </div>
   )
