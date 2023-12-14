@@ -37,8 +37,25 @@ export default function Home() {
 
     const handleDelete = (id) => {
         const deleteData = [...data]
-       const updatedData = deleteData.filter((item)=> item.id !== id)
+        const updatedData = deleteData.filter((item) => item.id !== id)
         setData(updatedData)
+    }
+
+    // filter function 
+
+    const handleFilterByPrice = (filterType) => {
+
+        const filtered = [...data]
+        const filteredData = filtered.filter((item) => {
+            if (filterType === "moreThan100") {
+                return item.price >= 50;
+            }
+            else if (filterType === "lessThan100") {
+                return item.price < 50;
+            }
+            return true; // No Filter applied
+        })
+        setData(filteredData)
 
     }
 
@@ -50,6 +67,11 @@ export default function Home() {
             <div>
                 <button onClick={handlesort} >Dsc</button>
                 <button onClick={handlesort} >Asc</button>
+            </div>
+
+            <div>
+                <button onClick={() => handleFilterByPrice("lessThan100")} >Less than 10</button>
+                <button onClick={() => handleFilterByPrice("moreThan100")} >More than 10 </button>
             </div>
 
             <div style={{ display: "flex", justifyContent: "space-around ", gridTemplateRows: "auto", gap: "20px", textalign: "center", padding: "10px", }} >
@@ -70,7 +92,7 @@ export default function Home() {
 
 
 
-//  sort function practice 
+//  sort and filter function practice
 //  const [ascending, setAscending] = (true)
 //  const [data, setData] = useState([])
 //  useState(()=>{
@@ -88,7 +110,7 @@ export default function Home() {
 //    setData(sortedData)
 // }
 //
-//  return 
+//  return
 //      <button onClick={handleSort} >Desc</button>
 //      <button onClick={handleSort} >Asc</button>
 //
